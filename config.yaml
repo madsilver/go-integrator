@@ -1,0 +1,2 @@
+postgresurl: postgres://postgres:postgres@172.26.0.3:5432/vb?sslmode=disable
+rabbitmqurl: amqps://[user]:[pass]@host:port/vhost
