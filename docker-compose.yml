@@ -1,0 +1,24 @@
+version: "3.1"
+services:
+
+    postgres:
+      image: mdillon/postgis:11
+      volumes:
+        - ./data/postgres:/var/lib/postgresql/data
+      environment:
+        - POSTGRES_USER=${DB_USERNAME}
+        - POSTGRES_PASSWORD=${DB_PASSWORD}
+        - POSTGRES_DB=${DB_DATABASE}
+      ports:
+        - "5432:5432"
+
+    rabbitmq:
+      image: "rabbitmq:3-management"
+      environment:
+        RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+        RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+        RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+        RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
+      ports:
+        - "${RABBITMQ_API_PORT}:15672"
+        - "${RABBITMQ_PORT}:5672"
