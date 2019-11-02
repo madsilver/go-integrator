@@ -22,3 +22,15 @@ services:
       ports:
         - "${RABBITMQ_API_PORT}:15672"
         - "${RABBITMQ_PORT}:5672"
+
+    supervisor:
+      build: env/supervisor
+      container_name: nextibus-integrator
+      working_dir: /application
+      volumes:
+        - ./build:/application
+      ports:
+        - "8091:9001"
+      networks:
+        - laradock_backend
+        - nextibus-users-api_nextibus

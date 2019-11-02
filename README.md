@@ -1,15 +1,46 @@
-# go-postgres-rabbitmq
+# go-integrator
+This is a listener for events from the realtime_locations table in Postgres that sends records to a queue on RabbitMQ server and Redis server.
 
-Listener for Postgres that sends data to a queue in RabbitMQ
+## Requirements
+App requires Golang 1.8 or later and Dep Package Manager
 
-### Run
-```sh
-go get -a
-go run . -client=<database>
+## Installation
+- Install [Golang](https://golang.org/doc/install)
+- Install [Dep](https://github.com/golang/dep)
+
+```
+# Prepare the project for development
+make start
 ```
 
-### Build
-```sh
-go build .
+## Build
+```
+# Build the binary in your environment
+make build
+
+# Build with another OS. Default Linux
+$ make OS=darwin build
+
+# Clean Up
+$ make clean
+
+# Configure. Install app dependencies.
+$ make configure
 ```
 
+## Run
+```
+docker-compose up -d
+```
+
+## Development
+```
+# Run the application without build
+go run ./cmd/*.go -client=<client> -env=dev
+```
+
+## Web GUI
+### Supervisior
+http://localhost:8091
+### RabbitMQ
+http://localhost:15672

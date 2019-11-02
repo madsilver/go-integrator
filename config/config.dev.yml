@@ -1,0 +1,34 @@
+server:
+  postgres:
+    host: "172.23.0.2"
+    port: 5432
+    username: "postgres"
+    password: "postgres"
+  rabbitmq:
+    host: "172.26.0.3"
+    port: 5672
+    username: "rabbitmq"
+    password: "rabbitmq"
+  redis:
+    host: "172.26.0.2"
+    port: 6379
+    username: ""
+    password: ""
+    expiration: 300
+events:
+  operational:
+    - "departure_delay"
+    - "arrival_delay"
+    - "route_diversion"
+    - "convoy"
+    - "hole"
+    - "travel_loss"
+    - "travel_loss_adapted"
+    - "speeding"
+    - "reverse_route"
+    - "stopped_terminal"
+    - "stopped_line"
+  system:
+    - "terminal_input"
+    - "terminal_output"
+    - "stop_input"

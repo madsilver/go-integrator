@@ -1,2 +1,6 @@
-.vscode
+vendor
+config/config.yml
 .env
+build
+.vscode
+
